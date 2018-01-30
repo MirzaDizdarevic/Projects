@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EnssolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Allgemein">
+          <Key>
+            <PropertyRef Name="AllgemeineID" />
+          </Key>
+          <Property Name="AllgemeineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firmenname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="50" />
+          <Property Name="PLZ" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stadt" Type="nvarchar" MaxLength="50" />
+          <Property Name="RechnungNr" Type="nvarchar" MaxLength="50" />
+          <Property Name="Insgesammt" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdresseEnssol" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelefonEnssol" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirmennameEnssol" Type="nvarchar" MaxLength="50" />
+          <Property Name="Beschreibung" Type="nvarchar" MaxLength="500" />
+          <Property Name="Datum" Type="date" />
+        </EntityType>
+        <EntityType Name="Angebot">
+          <Key>
+            <PropertyRef Name="AngebotID" />
+          </Key>
+          <Property Name="AngebotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firmenname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="50" />
+          <Property Name="PLZ" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stadt" Type="nvarchar" MaxLength="50" />
+          <Property Name="AngebotNr" Type="nvarchar" MaxLength="50" />
+          <Property Name="Insgessamt" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirmenNameEnssol" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelefonEnssol" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdresseEnssol" Type="nvarchar" MaxLength="50" />
+          <Property Name="Beschreibung" Type="nvarchar" MaxLength="500" />
+          <Property Name="Datum" Type="date" />
+        </EntityType>
+        <Function Name="rptEnssolPredRacun" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AngebotID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="rptEnssolRacun" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AllgemeineID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_AllgemeinSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_AngebotSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_AngebotSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AngebotID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_insertAngebotPodaci" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Firmenname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Adresse" Type="nvarchar" Mode="In" />
+          <Parameter Name="PLZ" Type="nvarchar" Mode="In" />
+          <Parameter Name="Stadt" Type="nvarchar" Mode="In" />
+          <Parameter Name="AngebotNr" Type="nvarchar" Mode="In" />
+          <Parameter Name="Insgessamt" Type="nvarchar" Mode="In" />
+          <Parameter Name="AdresseEnssol" Type="nvarchar" Mode="In" />
+          <Parameter Name="TelefonEnssol" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirmenNameEnssol" Type="nvarchar" Mode="In" />
+          <Parameter Name="Beschreibung" Type="nvarchar" Mode="In" />
+          <Parameter Name="Datum" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertPodaci" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Firmenname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Adresse" Type="nvarchar" Mode="In" />
+          <Parameter Name="PLZ" Type="nvarchar" Mode="In" />
+          <Parameter Name="Stadt" Type="nvarchar" Mode="In" />
+          <Parameter Name="RechnungNr" Type="nvarchar" Mode="In" />
+          <Parameter Name="Insgesammt" Type="nvarchar" Mode="In" />
+          <Parameter Name="AdresseEnssol" Type="nvarchar" Mode="In" />
+          <Parameter Name="TelefonEnssol" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirmennameEnssol" Type="nvarchar" Mode="In" />
+          <Parameter Name="Beschreibung" Type="nvarchar" Mode="In" />
+          <Parameter Name="Datum" Type="date" Mode="In" />
+        </Function>
+        <Function Name="uspAllgemeinSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AllgemeineID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="EnssolModelStoreContainer">
+          <EntitySet Name="Allgemein" EntityType="Self.Allgemein" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Angebot" EntityType="Self.Angebot" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EnssolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EnssolEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="uspAllgemeinSelectByID" EntitySet="Allgemeins" ReturnType="Collection(EnssolModel.Allgemein)">
+          <Parameter Name="AllgemeineID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Allgemeins" EntityType="EnssolModel.Allgemein" />
+          <FunctionImport Name="usp_AllgemeinSelectAll" ReturnType="Collection(EnssolModel.usp_AllgemeinSelectAll_Result1)" />
+          <FunctionImport Name="usp_InsertPodaci" ReturnType="Collection(Decimal)">
+            <Parameter Name="Firmenname" Mode="In" Type="String" />
+            <Parameter Name="Adresse" Mode="In" Type="String" />
+            <Parameter Name="PLZ" Mode="In" Type="String" />
+            <Parameter Name="Stadt" Mode="In" Type="String" />
+            <Parameter Name="RechnungNr" Mode="In" Type="String" />
+            <Parameter Name="Insgesammt" Mode="In" Type="String" />
+            <Parameter Name="AdresseEnssol" Mode="In" Type="String" />
+            <Parameter Name="TelefonEnssol" Mode="In" Type="String" />
+            <Parameter Name="FirmennameEnssol" Mode="In" Type="String" />
+            <Parameter Name="Beschreibung" Mode="In" Type="String" />
+            <Parameter Name="Datum" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="rptEnssolRacun" ReturnType="Collection(EnssolModel.rptEnssolRacun_Result2)">
+          <Parameter Name="AllgemeineID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Angebots" EntityType="EnssolModel.Angebot" />
+          <FunctionImport Name="usp_insertAngebotPodaci" ReturnType="Collection(Decimal)">
+            <Parameter Name="Firmenname" Mode="In" Type="String" />
+            <Parameter Name="Adresse" Mode="In" Type="String" />
+            <Parameter Name="PLZ" Mode="In" Type="String" />
+            <Parameter Name="Stadt" Mode="In" Type="String" />
+            <Parameter Name="AngebotNr" Mode="In" Type="String" />
+            <Parameter Name="Insgessamt" Mode="In" Type="String" />
+            <Parameter Name="AdresseEnssol" Mode="In" Type="String" />
+            <Parameter Name="TelefonEnssol" Mode="In" Type="String" />
+            <Parameter Name="FirmenNameEnssol" Mode="In" Type="String" />
+            <Parameter Name="Beschreibung" Mode="In" Type="String" />
+            <Parameter Name="Datum" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_AngebotSelectAll" ReturnType="Collection(EnssolModel.usp_AngebotSelectAll_Result)" />
+          <FunctionImport Name="usp_AngebotSelectByID" EntitySet="Angebots" ReturnType="Collection(EnssolModel.Angebot)">
+          <Parameter Name="AngebotID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="rptEnssolPredRacun" ReturnType="Collection(EnssolModel.rptEnssolPredRacun_Result)">
+            <Parameter Name="AngebotID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="uspAllgemeinSelectByID_Result">
+          <Property Type="Int32" Name="AllgemeineID" Nullable="false" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RechnungNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgesammt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="uspAllgemeinSelectByID_Result1">
+          <Property Type="Int32" Name="AllgemeineID" Nullable="false" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RechnungNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgesammt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_AllgemeinSelectAll_Result">
+          <Property Type="Int32" Name="AllgemeineID" Nullable="false" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RechnungNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgesammt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="rptEnssolRacun_Result">
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RechnungNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgesammt" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Allgemein">
+          <Key>
+            <PropertyRef Name="AllgemeineID" />
+          </Key>
+          <Property Name="AllgemeineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firmenname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PLZ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stadt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RechnungNr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Insgesammt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdresseEnssol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelefonEnssol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirmennameEnssol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Beschreibung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+        </EntityType>
+        <ComplexType Name="usp_AllgemeinSelectAll_Result1">
+          <Property Type="Int32" Name="AllgemeineID" Nullable="false" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RechnungNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgesammt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Beschreibung" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="rptEnssolRacun_Result1">
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RechnungNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgesammt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Beschreibung" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="rptEnssolRacun_Result2">
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RechnungNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgesammt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Beschreibung" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Angebot">
+          <Key>
+            <PropertyRef Name="AngebotID" />
+          </Key>
+          <Property Name="AngebotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firmenname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PLZ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stadt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AngebotNr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Insgessamt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirmenNameEnssol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelefonEnssol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdresseEnssol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Beschreibung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+        </EntityType>
+        <ComplexType Name="usp_AngebotSelectAll_Result">
+          <Property Type="Int32" Name="AngebotID" Nullable="false" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AngebotNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgessamt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Beschreibung" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_AngebotSelectByID_Result">
+          <Property Type="Int32" Name="AngebotID" Nullable="false" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AngebotNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgessamt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirmenNameEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Beschreibung" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="rptEnssolPredRacun_Result">
+          <Property Type="String" Name="FirmennameEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdresseEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TelefonEnssol" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Firmenname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PLZ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AngebotNr" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Insgessamt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Beschreibung" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EnssolModelStoreContainer" CdmEntityContainer="EnssolEntities">
+          <FunctionImportMapping FunctionImportName="uspAllgemeinSelectByID" FunctionName="EnssolModel.Store.uspAllgemeinSelectByID">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Allgemeins">
+            <EntityTypeMapping TypeName="EnssolModel.Allgemein">
+              <MappingFragment StoreEntitySet="Allgemein">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+                <ScalarProperty Name="FirmennameEnssol" ColumnName="FirmennameEnssol" />
+                <ScalarProperty Name="TelefonEnssol" ColumnName="TelefonEnssol" />
+                <ScalarProperty Name="AdresseEnssol" ColumnName="AdresseEnssol" />
+                <ScalarProperty Name="Insgesammt" ColumnName="Insgesammt" />
+                <ScalarProperty Name="RechnungNr" ColumnName="RechnungNr" />
+                <ScalarProperty Name="Stadt" ColumnName="Stadt" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+                <ScalarProperty Name="AllgemeineID" ColumnName="AllgemeineID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_AllgemeinSelectAll" FunctionName="EnssolModel.Store.usp_AllgemeinSelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnssolModel.usp_AllgemeinSelectAll_Result1">
+                <ScalarProperty Name="AllgemeineID" ColumnName="AllgemeineID" />
+                <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Stadt" ColumnName="Stadt" />
+                <ScalarProperty Name="RechnungNr" ColumnName="RechnungNr" />
+                <ScalarProperty Name="Insgesammt" ColumnName="Insgesammt" />
+                <ScalarProperty Name="AdresseEnssol" ColumnName="AdresseEnssol" />
+                <ScalarProperty Name="TelefonEnssol" ColumnName="TelefonEnssol" />
+                <ScalarProperty Name="FirmennameEnssol" ColumnName="FirmennameEnssol" />
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_InsertPodaci" FunctionName="EnssolModel.Store.usp_InsertPodaci" />
+          <FunctionImportMapping FunctionImportName="rptEnssolRacun" FunctionName="EnssolModel.Store.rptEnssolRacun">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnssolModel.rptEnssolRacun_Result2">
+                <ScalarProperty Name="FirmennameEnssol" ColumnName="FirmennameEnssol" />
+                <ScalarProperty Name="AdresseEnssol" ColumnName="AdresseEnssol" />
+                <ScalarProperty Name="TelefonEnssol" ColumnName="TelefonEnssol" />
+                <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Stadt" ColumnName="Stadt" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="RechnungNr" ColumnName="RechnungNr" />
+                <ScalarProperty Name="Insgesammt" ColumnName="Insgesammt" />
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Angebots">
+            <EntityTypeMapping TypeName="EnssolModel.Angebot">
+              <MappingFragment StoreEntitySet="Angebot">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+                <ScalarProperty Name="AdresseEnssol" ColumnName="AdresseEnssol" />
+                <ScalarProperty Name="TelefonEnssol" ColumnName="TelefonEnssol" />
+                <ScalarProperty Name="FirmenNameEnssol" ColumnName="FirmenNameEnssol" />
+                <ScalarProperty Name="Insgessamt" ColumnName="Insgessamt" />
+                <ScalarProperty Name="AngebotNr" ColumnName="AngebotNr" />
+                <ScalarProperty Name="Stadt" ColumnName="Stadt" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+                <ScalarProperty Name="AngebotID" ColumnName="AngebotID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_insertAngebotPodaci" FunctionName="EnssolModel.Store.usp_insertAngebotPodaci" />
+          <FunctionImportMapping FunctionImportName="usp_AngebotSelectAll" FunctionName="EnssolModel.Store.usp_AngebotSelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnssolModel.usp_AngebotSelectAll_Result">
+                <ScalarProperty Name="AngebotID" ColumnName="AngebotID" />
+                <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Stadt" ColumnName="Stadt" />
+                <ScalarProperty Name="AngebotNr" ColumnName="AngebotNr" />
+                <ScalarProperty Name="Insgessamt" ColumnName="Insgessamt" />
+                <ScalarProperty Name="AdresseEnssol" ColumnName="AdresseEnssol" />
+                <ScalarProperty Name="TelefonEnssol" ColumnName="TelefonEnssol" />
+                <ScalarProperty Name="FirmennameEnssol" ColumnName="FirmennameEnssol" />
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_AngebotSelectByID" FunctionName="EnssolModel.Store.usp_AngebotSelectByID">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="rptEnssolPredRacun" FunctionName="EnssolModel.Store.rptEnssolPredRacun">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnssolModel.rptEnssolPredRacun_Result">
+                <ScalarProperty Name="FirmennameEnssol" ColumnName="FirmennameEnssol" />
+                <ScalarProperty Name="AdresseEnssol" ColumnName="AdresseEnssol" />
+                <ScalarProperty Name="TelefonEnssol" ColumnName="TelefonEnssol" />
+                <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Stadt" ColumnName="Stadt" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="AngebotNr" ColumnName="AngebotNr" />
+                <ScalarProperty Name="Insgessamt" ColumnName="Insgessamt" />
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
